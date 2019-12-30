@@ -34,7 +34,6 @@ Class FUPDATESQLSERVER.MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFie
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
-    reemplazar(String, String, String): PrivateScope, Public, HideBySig
     ConvertCSVtoDataTable(String): PrivateScope, Public, HideBySig
     pegarEnTxtSql(): PrivateScope, Public, HideBySig
     copiarDesdeTxtSql(): PrivateScope, Public, HideBySig

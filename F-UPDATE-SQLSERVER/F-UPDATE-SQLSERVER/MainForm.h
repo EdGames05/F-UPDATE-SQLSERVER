@@ -636,13 +636,12 @@ namespace FUPDATESQLSERVER {
 			for (int i = 0; i < rows->Length; i++)
 			{
 				String^ str = rows[i]->Replace("\"", "");
-				rows[i] = str->Replace(" ", "");
+				rows[i] = str;
 			}
 			DataRow^ dr = dt->NewRow();
 			for (int i = 0; i < headers->Length; i++)
 			{
-				String^ str = rows[i]->Replace(" ", "");
-				dr[i] = str;
+				dr[i] = rows[i];
 			}
 			dt->Rows->Add(dr);
 			bar->Value++;
@@ -664,14 +663,14 @@ namespace FUPDATESQLSERVER {
 	}
 
 	private: System::Void btnEjecutar_Click(System::Object^  sender, System::EventArgs^  e) {
-		/*if (coneServer->estaConectado())
+		if (coneServer->estaConectado())
 		{
 			bar->Visible = true;
 			bar->Maximum = tableCsv->Rows->Count;
 			bar->Value = 0;
 			this->Update();
-
-			for (int fil = 0; fil < tableCsv->Rows->Count; fil++)
+			String^ query = txtSql->Text;
+			for (int fil = 1; fil < tableCsv->Rows->Count; fil++)
 			{
 				for (int col = 0; col < tableCsv->Rows[fil]->Cells->Count; col++)
 				{
@@ -679,11 +678,16 @@ namespace FUPDATESQLSERVER {
 					{
 						if (cabecera == tableCsv->Columns[col]->HeaderText)
 						{
-							String^ query = txtSql->Text;
-							query = query->Replace("[" + cabecera + "]", tableCsv->Rows[fil]->Cells[col]->Value->ToString());
-							MessageBox::Show(query);
+							//---- Pendiente buscar porque no puedo reemplazar por ejemplo [nombre] por el valor
+							//---- y si puedo reemplazar solo nombre por el valor
+							String^ valor = tableCsv->Rows[fil]->Cells[col]->Value->ToString();
+							query = query->Replace(cabecera, valor);
 						}
 					}
+				}
+				if (!coneServer->ejecutarScriptSql(query))
+				{
+					MessageBox::Show(coneServer->getErrorMsg());
 				}
 				bar->Value = fil;
 				this->Update();
@@ -693,33 +697,8 @@ namespace FUPDATESQLSERVER {
 		else
 		{
 			MessageBox::Show("Conectese primero a una base de datos.");
-		}*/
-
-		bar->Visible = true;
-		bar->Maximum = tableCsv->Rows->Count;
-		bar->Value = 0;
-		this->Update();
-		String^ query = txtSql->Text;
-		String^ valorDevuelto = gcnew String("");
-		for (int fil = 1; fil < tableCsv->Rows->Count; fil++)
-		{
-			valorDevuelto = "";
-			for (int col = 0; col < tableCsv->Rows[fil]->Cells->Count; col++)
-			{
-				for each(String^ cabecera in encabezados)
-				{
-					if (cabecera == tableCsv->Columns[col]->HeaderText)
-					{
-						String^ valor = tableCsv->Rows[fil]->Cells[col]->Value->ToString();
-						query = query->Replace("<" + cabecera + ">", valor);
-					}
-				}
-			}
-			MessageBox::Show(query);
-			bar->Value = fil;
-			this->Update();
 		}
-		bar->Visible = false;
+
 	}
 
 	public: void pegarEnTxtSql()
