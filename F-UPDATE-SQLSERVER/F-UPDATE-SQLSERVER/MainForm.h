@@ -30,7 +30,7 @@ namespace FUPDATESQLSERVER {
 	private: System::Windows::Forms::ProgressBar^  bar;
 
 
-			 frm_coneServer^ frmCone;
+	private: frm_coneServer^ frmCone;
 
 	public:
 		MainForm(void)
@@ -573,7 +573,7 @@ namespace FUPDATESQLSERVER {
 		if (frmCone->estaConectado)
 		{
 			coneServer = frmCone->getConexion();
-			lbdConectadoInfo->Text = frmCone->getServidor();
+			lbdConectadoInfo->Text = frmCone->getServidor() + " - " + frmCone->getNombreBd();
 		}
 	}
 
@@ -601,7 +601,7 @@ namespace FUPDATESQLSERVER {
 			coneServer = gcnew ConeServer();
 		}
 
-		frmCone = gcnew frm_coneServer();
+		this->frmCone = gcnew frm_coneServer();
 		frmCone->FormClosed += gcnew FormClosedEventHandler(this, &MainForm::cerrando_frmConeServer);
 		frmCone->Show();
 	}

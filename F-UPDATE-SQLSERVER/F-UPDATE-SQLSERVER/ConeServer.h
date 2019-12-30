@@ -7,7 +7,7 @@ using namespace System::Data::SqlClient;
 ref class ConeServer
 {
 private:
-	String^ cadeCone = "Persist Security Info=False;User ID=[usuario];Password=[contrasena];Initial Catalog=AdventureWorks;Server=[servidor]";
+	String^ cadeCone = "Persist Security Info=False;User ID=[usuario];Password=[contrasena];Initial Catalog=[nombreBd];Server=[servidor]";
 	SqlConnection^ cone;
 	SqlDataReader^ data;
 	SqlCommand^ mQuery;
@@ -15,30 +15,26 @@ private:
 	bool esConectado = false;
 public:
 	ConeServer(){}
-	ConeServer(String^ servidor, String^ usuario, String^ contrasena)
+	ConeServer(String^ servidor, String^ usuario, String^ contrasena, String^ nombreBd)
 	{
-		cadeCone = cadeCone->Replace("[servidor]", servidor);
-		cadeCone = cadeCone->Replace("[usuario]", usuario);
-		cadeCone = cadeCone->Replace("[contrasena]", contrasena);
+		cadeCone = "Persist Security Info=False;User ID=" + usuario + ";Password=" + contrasena + ";Initial Catalog=" + nombreBd + ";Server=" + servidor + ";";
 	}
 	String^ getCadenaConexion() { return cadeCone; }
 	SqlConnection^ getConexion() { return cone; }
 	String^ getErrorMsg(){ return msgError; }
 	bool estaConectado() { return esConectado; }
 
-	SqlConnection^ conectar(String^ servidor, String^ usuario, String^ contrasena)
+	SqlConnection^ conectar(String^ servidor, String^ usuario, String^ contrasena, String^ nombreBd)
 	{
 		if (servidor != "" && usuario != "" && contrasena != "")
 		{
-			throw gcnew System::ArgumentException("Las cadenas tienen que traer información.", "servidor, usuario, contrasena");
+			throw gcnew System::ArgumentException("Las cadenas tienen que traer información.", "servidor, usuario, contrasena, nombreBd");
 			esConectado = false;
 			return nullptr;
 		}
 		else
 		{
-			cadeCone = cadeCone->Replace("[servidor]", servidor);
-			cadeCone = cadeCone->Replace("[usuario]", usuario);
-			cadeCone = cadeCone->Replace("[contrasena]", contrasena);
+			cadeCone = "Persist Security Info=False;User ID=" + usuario + ";Password=" + contrasena + ";Initial Catalog=" + nombreBd + ";Server=" + servidor + ";";
 			try 
 			{
 				cone = gcnew SqlConnection(cadeCone);

@@ -24,6 +24,9 @@ namespace FUPDATESQLSERVER {
 		String^ servidor;
 		String^ usuario;
 		String^ contra;
+		String^ nombreBd;
+
+	public:
 		frm_coneServer(void)
 		{
 			InitializeComponent();
@@ -55,6 +58,9 @@ namespace FUPDATESQLSERVER {
 	private: System::Windows::Forms::TextBox^  txtUsuario;
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::TextBox^  txtContrasena;
+	private: System::Windows::Forms::Label^  label4;
+	private: System::Windows::Forms::TextBox^  txtNombreBd;
+
 
 	private:
 		/// <summary>
@@ -78,6 +84,8 @@ namespace FUPDATESQLSERVER {
 			this->txtUsuario = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->txtContrasena = (gcnew System::Windows::Forms::TextBox());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->txtNombreBd = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// btnConectar
@@ -89,7 +97,7 @@ namespace FUPDATESQLSERVER {
 			this->btnConectar->ForeColor = System::Drawing::Color::White;
 			this->btnConectar->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnConectar.Image")));
 			this->btnConectar->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btnConectar->Location = System::Drawing::Point(198, 184);
+			this->btnConectar->Location = System::Drawing::Point(198, 211);
 			this->btnConectar->Name = L"btnConectar";
 			this->btnConectar->Size = System::Drawing::Size(138, 33);
 			this->btnConectar->TabIndex = 4;
@@ -107,7 +115,7 @@ namespace FUPDATESQLSERVER {
 			this->btnCancelar->ForeColor = System::Drawing::Color::White;
 			this->btnCancelar->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnCancelar.Image")));
 			this->btnCancelar->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btnCancelar->Location = System::Drawing::Point(359, 184);
+			this->btnCancelar->Location = System::Drawing::Point(359, 211);
 			this->btnCancelar->Name = L"btnCancelar";
 			this->btnCancelar->Size = System::Drawing::Size(138, 33);
 			this->btnCancelar->TabIndex = 5;
@@ -133,9 +141,9 @@ namespace FUPDATESQLSERVER {
 			this->txtServidor->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtServidor->ForeColor = System::Drawing::Color::LightGray;
-			this->txtServidor->Location = System::Drawing::Point(122, 30);
+			this->txtServidor->Location = System::Drawing::Point(152, 30);
 			this->txtServidor->Name = L"txtServidor";
-			this->txtServidor->Size = System::Drawing::Size(375, 26);
+			this->txtServidor->Size = System::Drawing::Size(345, 26);
 			this->txtServidor->TabIndex = 7;
 			// 
 			// label2
@@ -156,9 +164,9 @@ namespace FUPDATESQLSERVER {
 			this->txtUsuario->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtUsuario->ForeColor = System::Drawing::Color::LightGray;
-			this->txtUsuario->Location = System::Drawing::Point(122, 68);
+			this->txtUsuario->Location = System::Drawing::Point(152, 68);
 			this->txtUsuario->Name = L"txtUsuario";
-			this->txtUsuario->Size = System::Drawing::Size(375, 26);
+			this->txtUsuario->Size = System::Drawing::Size(345, 26);
 			this->txtUsuario->TabIndex = 9;
 			// 
 			// label3
@@ -179,11 +187,35 @@ namespace FUPDATESQLSERVER {
 			this->txtContrasena->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtContrasena->ForeColor = System::Drawing::Color::LightGray;
-			this->txtContrasena->Location = System::Drawing::Point(122, 111);
+			this->txtContrasena->Location = System::Drawing::Point(152, 111);
 			this->txtContrasena->Name = L"txtContrasena";
 			this->txtContrasena->PasswordChar = '*';
-			this->txtContrasena->Size = System::Drawing::Size(375, 26);
+			this->txtContrasena->Size = System::Drawing::Size(345, 26);
 			this->txtContrasena->TabIndex = 11;
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label4->Location = System::Drawing::Point(12, 156);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(134, 20);
+			this->label4->TabIndex = 12;
+			this->label4->Text = L"Nombre de la BD:";
+			// 
+			// txtNombreBd
+			// 
+			this->txtNombreBd->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(28)), static_cast<System::Int32>(static_cast<System::Byte>(28)),
+				static_cast<System::Int32>(static_cast<System::Byte>(28)));
+			this->txtNombreBd->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->txtNombreBd->ForeColor = System::Drawing::Color::LightGray;
+			this->txtNombreBd->Location = System::Drawing::Point(152, 153);
+			this->txtNombreBd->Name = L"txtNombreBd";
+			this->txtNombreBd->PasswordChar = '*';
+			this->txtNombreBd->Size = System::Drawing::Size(345, 26);
+			this->txtNombreBd->TabIndex = 13;
 			// 
 			// frm_coneServer
 			// 
@@ -192,7 +224,9 @@ namespace FUPDATESQLSERVER {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(45)),
 				static_cast<System::Int32>(static_cast<System::Byte>(48)));
 			this->CancelButton = this->btnCancelar;
-			this->ClientSize = System::Drawing::Size(523, 229);
+			this->ClientSize = System::Drawing::Size(523, 267);
+			this->Controls->Add(this->txtNombreBd);
+			this->Controls->Add(this->label4);
 			this->Controls->Add(this->txtContrasena);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->txtUsuario);
@@ -219,9 +253,10 @@ namespace FUPDATESQLSERVER {
 	public: String^ getUsuario() { return this->usuario; }
 	public: String^ getContrasena() { return this->contra; }
 	public: ConeServer^ getConexion() { return coneS; }
+	public: String^ getNombreBd() { return nombreBd; }
 
 	private: System::Void btnConectar_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (txtServidor->Text == "" || txtContrasena->Text == "" || txtUsuario->Text == "")
+		if (txtServidor->Text == "" || txtContrasena->Text == "" || txtUsuario->Text == "" || txtNombreBd->Text == "")
 		{
 			MessageBox::Show("Llene todos los campos para continuar.");
 			estaConectado = false;
@@ -229,7 +264,7 @@ namespace FUPDATESQLSERVER {
 		else
 		{
 			coneS = gcnew ConeServer();
-			if (coneS->conectar(txtServidor->Text, txtUsuario->Text, txtContrasena->Text) == nullptr)
+			if (coneS->conectar(txtServidor->Text, txtUsuario->Text, txtContrasena->Text, txtNombreBd->Text) == nullptr)
 			{
 				MessageBox::Show("Ocurrio un error al conectar: " + coneS->getErrorMsg());
 				estaConectado = false;
@@ -244,5 +279,5 @@ namespace FUPDATESQLSERVER {
 			}
 		}
 	}
-};
+	};
 }

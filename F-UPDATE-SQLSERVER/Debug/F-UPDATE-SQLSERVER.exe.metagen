@@ -25,11 +25,13 @@ Class FUPDATESQLSERVER.frm_coneServer: AutoLayout, AnsiClass, Class, Public, Bef
     System.String servidor : Public
     System.String usuario : Public
     System.String contra : Public
+    System.String nombreBd : Public
   Methods:
     getServidor(): PrivateScope, Public, HideBySig
     getUsuario(): PrivateScope, Public, HideBySig
     getContrasena(): PrivateScope, Public, HideBySig
     getConexion(): PrivateScope, Public, HideBySig
+    getNombreBd(): PrivateScope, Public, HideBySig
 Class FUPDATESQLSERVER.MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
