@@ -12,6 +12,7 @@ private:
 	SqlDataReader^ data;
 	SqlCommand^ mQuery;
 	String^ msgError = "";
+	bool esConectado = false;
 public:
 	ConeServer(){}
 	ConeServer(String^ servidor, String^ usuario, String^ contrasena)
@@ -23,31 +24,14 @@ public:
 	String^ getCadenaConexion() { return cadeCone; }
 	SqlConnection^ getConexion() { return cone; }
 	String^ getErrorMsg(){ return msgError; }
-	bool estaConectado()
-	{
-		try
-		{
-			if (cone->State == ConnectionState::Open)
-			{
-				return true;
-			}
-			else
-			{
-				false;
-			}
-		}
-		catch (SqlException^ ex)
-		{
-			msgError = ex->Message;
-			return false;
-		}
-	}
+	bool estaConectado() { return esConectado; }
 
 	SqlConnection^ conectar(String^ servidor, String^ usuario, String^ contrasena)
 	{
 		if (servidor != "" && usuario != "" && contrasena != "")
 		{
 			throw gcnew System::ArgumentException("Las cadenas tienen que traer información.", "servidor, usuario, contrasena");
+			esConectado = false;
 			return nullptr;
 		}
 		else
@@ -59,11 +43,13 @@ public:
 			{
 				cone = gcnew SqlConnection(cadeCone);
 				cone->Open();
+				esConectado = true;
 				return cone;
 			}
 			catch (SqlException^ ex)
 			{
 				msgError = ex->Message;
+				esConectado = false;
 				return nullptr;
 			}
 		}
@@ -71,28 +57,23 @@ public:
 
 	bool cerrarConexion()
 	{
-		if (cone->State == ConnectionState::Open)
+		try
 		{
-			try
-			{
-				cone->Close();
-				return true;
-			}
-			catch (SqlException^ ex)
-			{
-				msgError = ex->Message;
-				return false;
-			}
-		}
-		else
-		{
+			cone->Close();
+			esConectado = false;
 			return true;
+		}
+		catch (SqlException^ ex)
+		{
+			msgError = ex->Message;
+			esConectado = false;
+			return false;
 		}
 	}
 
 	SqlDataReader^ consulta(String^ query)
 	{
-		if (estaConectado())
+		if (esConectado)
 		{
 			try
 			{
@@ -115,7 +96,7 @@ public:
 
 	bool ejecutarScriptSql(String^ sql)
 	{
-		if (estaConectado())
+		if (esConectado)
 		{
 			try
 			{

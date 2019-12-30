@@ -1,0 +1,39 @@
+  FUPDATESQLSERVER.frm_coneServer.resources - Embedded, ContainedInManifestFile, 
+  FUPDATESQLSERVER.MainForm.resources - Embedded, ContainedInManifestFile, 
+ImageRuntimeVersion: v4.0.30319
+Assembly F-UPDATE-SQLSERVER, Version=0.0.*, Culture=Todos los idiomas (todos los países): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class FUPDATESQLSERVER.frm_coneServer: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.ToolTip tip : Public
+    Boolean estaConectado : Public
+    ConeServer coneS : Public
+    System.String servidor : Public
+    System.String usuario : Public
+    System.String contra : Public
+  Methods:
+    getServidor(): PrivateScope, Public, HideBySig
+    getUsuario(): PrivateScope, Public, HideBySig
+    getContrasena(): PrivateScope, Public, HideBySig
+    getConexion(): PrivateScope, Public, HideBySig
+Class FUPDATESQLSERVER.MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    ConvertCSVtoDataTable(String): PrivateScope, Public, HideBySig
+    pegarEnTxtSql(): PrivateScope, Public, HideBySig
+    copiarDesdeTxtSql(): PrivateScope, Public, HideBySig

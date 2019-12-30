@@ -42,6 +42,7 @@ namespace FUPDATESQLSERVER {
 			frmCone = nullptr;
 			coneServer = nullptr;
 			bar->Style = System::Windows::Forms::ProgressBarStyle::Continuous;
+			coneServer = gcnew ConeServer();
 		}
 
 	protected:
@@ -594,6 +595,12 @@ namespace FUPDATESQLSERVER {
 			delete frmCone;
 		}
 
+		if (coneServer != nullptr)
+		{
+			delete coneServer;
+			coneServer = gcnew ConeServer();
+		}
+
 		frmCone = gcnew frm_coneServer();
 		frmCone->FormClosed += gcnew FormClosedEventHandler(this, &MainForm::cerrando_frmConeServer);
 		frmCone->Show();
@@ -663,6 +670,12 @@ namespace FUPDATESQLSERVER {
 	}
 
 	private: System::Void btnEjecutar_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (tableCsv->Rows->Count < 1)
+		{
+			MessageBox::Show("Importe primero un archivo csv");
+			return;
+		}
+		else
 		if (coneServer->estaConectado())
 		{
 			bar->Visible = true;
