@@ -1,9 +1,4 @@
-﻿  frm_coneServer.cpp
-c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\frm_coneserver.h(23): warning C4677: 'coneS': la signatura de un miembro no privado contiene un tipo privado de ensamblado de 'ConeServer'
-  c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\coneserver.h(7): note: vea la declaración de 'ConeServer'
-c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\frm_coneserver.h(221): warning C4677: 'getConexion': la signatura de un miembro no privado contiene un tipo privado de ensamblado de 'ConeServer'
-  c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\coneserver.h(7): note: vea la declaración de 'ConeServer'
-  MainForm.cpp
+﻿  MainForm.cpp
 c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\frm_coneserver.h(23): warning C4677: 'coneS': la signatura de un miembro no privado contiene un tipo privado de ensamblado de 'ConeServer'
   c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\coneserver.h(7): note: vea la declaración de 'ConeServer'
 c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\frm_coneserver.h(221): warning C4677: 'getConexion': la signatura de un miembro no privado contiene un tipo privado de ensamblado de 'ConeServer'
@@ -11,9 +6,13 @@ c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\frm_coneserver
 c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\mainform.h(605): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
 c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\mainform.h(612): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
 c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\mainform.cpp(7): warning C4007: 'WinMain': debe ser '__stdcall'
+  frm_coneServer.cpp
+c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\frm_coneserver.h(23): warning C4677: 'coneS': la signatura de un miembro no privado contiene un tipo privado de ensamblado de 'ConeServer'
+  c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\coneserver.h(7): note: vea la declaración de 'ConeServer'
+c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\frm_coneserver.h(221): warning C4677: 'getConexion': la signatura de un miembro no privado contiene un tipo privado de ensamblado de 'ConeServer'
+  c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\coneserver.h(7): note: vea la declaración de 'ConeServer'
   Generando código...
 c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\coneserver.h(44): warning C4715: 'ConeServer::estaConectado': no todas las rutas de acceso de control devuelven un valor
 c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\coneserver.h(44): warning C4715: 'ConeServer::estaConectado': no todas las rutas de acceso de control devuelven un valor
-  .NETFramework,Version=v4.6.1.AssemblyAttributes.cpp
   frm_coneServer.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
   F-UPDATE-SQLSERVER.vcxproj -> C:\Users\Allam\source\repos\F-UPDATE-SQLSERVER\Debug\F-UPDATE-SQLSERVER.exe

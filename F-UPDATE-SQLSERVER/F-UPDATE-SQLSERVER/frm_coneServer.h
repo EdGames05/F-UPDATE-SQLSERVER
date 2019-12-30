@@ -204,7 +204,7 @@ namespace FUPDATESQLSERVER {
 			this->ForeColor = System::Drawing::Color::LightGray;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"frm_coneServer";
-			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Conectarse a SQL SERVER";
 			this->ResumeLayout(false);
 			this->PerformLayout();
