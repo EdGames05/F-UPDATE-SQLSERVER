@@ -469,7 +469,7 @@ namespace FUPDATESQLSERVER {
 			// 
 			dataGridViewCellStyle1->ForeColor = System::Drawing::Color::Black;
 			this->tableCsv->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-			this->tableCsv->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
+			this->tableCsv->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->tableCsv->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(28)), static_cast<System::Int32>(static_cast<System::Byte>(28)),
 				static_cast<System::Int32>(static_cast<System::Byte>(28)));
 			this->tableCsv->BorderStyle = System::Windows::Forms::BorderStyle::None;
