@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Funciones.h"
 #include "ConeServer.h"
 #include "frm_coneServer.h"
 
@@ -670,7 +671,7 @@ namespace FUPDATESQLSERVER {
 	}
 
 	private: System::Void btnEjecutar_Click(System::Object^  sender, System::EventArgs^  e) {
-		if (tableCsv->Rows->Count < 1)
+		/*if (tableCsv->Rows->Count < 1)
 		{
 			MessageBox::Show("Importe primero un archivo csv");
 			return;
@@ -694,7 +695,7 @@ namespace FUPDATESQLSERVER {
 							//---- Pendiente buscar porque no puedo reemplazar por ejemplo [nombre] por el valor
 							//---- y si puedo reemplazar solo nombre por el valor
 							String^ valor = tableCsv->Rows[fil]->Cells[col]->Value->ToString();
-							query = query->Replace(cabecera, valor);
+							query = Funciones::reemplazarstr(query, "<" + cabecera + ">", valor);
 						}
 					}
 				}
@@ -710,7 +711,40 @@ namespace FUPDATESQLSERVER {
 		else
 		{
 			MessageBox::Show("Conectese primero a una base de datos.");
+		}*/
+
+		bar->Visible = true;
+		bar->Maximum = tableCsv->Rows->Count;
+		bar->Value = 0;
+		this->Update();
+		String^ query = txtSql->Text;
+		for (int fil = 0; fil < tableCsv->Rows->Count - 1; fil++)
+		{
+			txtSql->AppendText("\n");
+			for (int col = 0; col < tableCsv->Rows[fil]->Cells->Count; col++)
+			{
+				for each(String^ cabecera in encabezados)
+				{
+					if (cabecera == tableCsv->Columns[col]->HeaderText)
+					{
+						//---- Pendiente buscar porque no puedo reemplazar por ejemplo [nombre] por el valor
+						//---- y si puedo reemplazar solo nombre por el valor
+						String^ valor = tableCsv->Rows[fil]->Cells[col]->Value->ToString();
+						query = Funciones::reemplazarstr(query, "<" + cabecera + ">", valor);
+					}
+				}
+				txtSql->AppendText(",");
+				txtSql->AppendText(tableCsv->Rows[fil]->Cells[col]->Value->ToString());
+			}
+			//txtSql->AppendText(query);
+			/*if (!coneServer->ejecutarScriptSql(query))
+			{
+				MessageBox::Show(coneServer->getErrorMsg());
+			}*/
+			bar->Value = fil;
+			this->Update();
 		}
+		bar->Visible = false;
 
 	}
 

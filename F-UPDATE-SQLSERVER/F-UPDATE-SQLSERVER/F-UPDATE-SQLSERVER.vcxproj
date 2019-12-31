@@ -143,9 +143,11 @@
     <ClInclude Include="frm_coneServer.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Funciones.h" />
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frm_coneServer.resx">
@@ -154,6 +156,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="F-UPDATE-SQLSERVER.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -274,6 +274,7 @@ namespace FUPDATESQLSERVER {
 				servidor = txtServidor->Text;
 				usuario = txtUsuario->Text;
 				contra = txtContrasena->Text;
+				nombreBd = txtNombreBd->Text;
 				estaConectado = true;
 				this->Close();
 			}
