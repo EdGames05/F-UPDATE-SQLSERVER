@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Funciones.h"
 #include "ConeServer.h"
 #include "frm_coneServer.h"
+#include "frm_docs.h"
 
 namespace FUPDATESQLSERVER {
 
@@ -23,12 +23,14 @@ namespace FUPDATESQLSERVER {
 		ConeServer^ coneServer;
 		String^ nombreArchi;
 		array<String^>^ encabezados;
+		frm_docs^ frm_doc;
 	private: System::Windows::Forms::Panel^  panel5;
 	private: System::Windows::Forms::Panel^  panelTxtSqlServer;
 	private: System::Windows::Forms::Panel^  panel6;
 	private: System::Windows::Forms::OpenFileDialog^  openFile;
 	private: System::Windows::Forms::DataGridView^  tableCsv;
 	private: System::Windows::Forms::ProgressBar^  bar;
+	private: System::Windows::Forms::CheckBox^  chk_generarScript;
 
 
 	private: frm_coneServer^ frmCone;
@@ -44,6 +46,7 @@ namespace FUPDATESQLSERVER {
 			coneServer = nullptr;
 			bar->Style = System::Windows::Forms::ProgressBarStyle::Continuous;
 			coneServer = gcnew ConeServer();
+			frm_doc = nullptr;
 		}
 
 	protected:
@@ -107,11 +110,11 @@ namespace FUPDATESQLSERVER {
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle16 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle17 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle18 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle19 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle20 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->mainMenu = (gcnew System::Windows::Forms::MenuStrip());
 			this->menuArchivo = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->itemAbrirCSV = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -138,6 +141,7 @@ namespace FUPDATESQLSERVER {
 			this->opZoomMas = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->opZoomMenos = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->panel6 = (gcnew System::Windows::Forms::Panel());
+			this->chk_generarScript = (gcnew System::Windows::Forms::CheckBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->lbdZoom = (gcnew System::Windows::Forms::Label());
 			this->splitter1 = (gcnew System::Windows::Forms::Splitter());
@@ -228,8 +232,9 @@ namespace FUPDATESQLSERVER {
 			// 
 			this->itemVerDoc->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"itemVerDoc.Image")));
 			this->itemVerDoc->Name = L"itemVerDoc";
-			this->itemVerDoc->Size = System::Drawing::Size(178, 22);
+			this->itemVerDoc->Size = System::Drawing::Size(180, 22);
 			this->itemVerDoc->Text = L"Ver Documentación";
+			this->itemVerDoc->Click += gcnew System::EventHandler(this, &MainForm::itemVerDoc_Click);
 			// 
 			// label1
 			// 
@@ -256,9 +261,9 @@ namespace FUPDATESQLSERVER {
 			// 
 			// bar
 			// 
-			this->bar->Location = System::Drawing::Point(200, 9);
+			this->bar->Location = System::Drawing::Point(467, 9);
 			this->bar->Name = L"bar";
-			this->bar->Size = System::Drawing::Size(1209, 23);
+			this->bar->Size = System::Drawing::Size(942, 23);
 			this->bar->Style = System::Windows::Forms::ProgressBarStyle::Continuous;
 			this->bar->TabIndex = 3;
 			this->bar->Visible = false;
@@ -410,6 +415,7 @@ namespace FUPDATESQLSERVER {
 			// 
 			// panel6
 			// 
+			this->panel6->Controls->Add(this->chk_generarScript);
 			this->panel6->Controls->Add(this->label2);
 			this->panel6->Controls->Add(this->lbdZoom);
 			this->panel6->Dock = System::Windows::Forms::DockStyle::Top;
@@ -417,6 +423,18 @@ namespace FUPDATESQLSERVER {
 			this->panel6->Name = L"panel6";
 			this->panel6->Size = System::Drawing::Size(533, 22);
 			this->panel6->TabIndex = 0;
+			// 
+			// chk_generarScript
+			// 
+			this->chk_generarScript->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->chk_generarScript->AutoSize = true;
+			this->chk_generarScript->Location = System::Drawing::Point(423, 2);
+			this->chk_generarScript->Name = L"chk_generarScript";
+			this->chk_generarScript->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
+			this->chk_generarScript->Size = System::Drawing::Size(92, 17);
+			this->chk_generarScript->TabIndex = 3;
+			this->chk_generarScript->Text = L"Generar script";
+			this->chk_generarScript->UseVisualStyleBackColor = true;
 			// 
 			// label2
 			// 
@@ -467,55 +485,55 @@ namespace FUPDATESQLSERVER {
 			// 
 			// tableCsv
 			// 
-			dataGridViewCellStyle1->ForeColor = System::Drawing::Color::Black;
-			this->tableCsv->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-			this->tableCsv->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			dataGridViewCellStyle16->ForeColor = System::Drawing::Color::Black;
+			this->tableCsv->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+			this->tableCsv->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
 			this->tableCsv->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(28)), static_cast<System::Int32>(static_cast<System::Byte>(28)),
 				static_cast<System::Int32>(static_cast<System::Byte>(28)));
 			this->tableCsv->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->tableCsv->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle2->BackColor = System::Drawing::Color::SteelBlue;
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle17->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle17->BackColor = System::Drawing::Color::SteelBlue;
+			dataGridViewCellStyle17->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::Color::LightGray;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->tableCsv->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle17->ForeColor = System::Drawing::Color::LightGray;
+			dataGridViewCellStyle17->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle17->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle17->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->tableCsv->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
 			this->tableCsv->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
-				static_cast<System::Int32>(static_cast<System::Byte>(38)));
-			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
+			dataGridViewCellStyle18->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle18->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)),
+				static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(38)));
+			dataGridViewCellStyle18->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			dataGridViewCellStyle3->ForeColor = System::Drawing::Color::LightGray;
-			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->tableCsv->DefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle18->ForeColor = System::Drawing::Color::LightGray;
+			dataGridViewCellStyle18->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle18->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle18->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->tableCsv->DefaultCellStyle = dataGridViewCellStyle18;
 			this->tableCsv->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->tableCsv->EnableHeadersVisualStyles = false;
 			this->tableCsv->GridColor = System::Drawing::Color::LightGray;
 			this->tableCsv->Location = System::Drawing::Point(3, 16);
 			this->tableCsv->Name = L"tableCsv";
-			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
-				static_cast<System::Int32>(static_cast<System::Byte>(38)));
-			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
+			dataGridViewCellStyle19->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle19->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)),
+				static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(38)));
+			dataGridViewCellStyle19->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->tableCsv->RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle19->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle19->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle19->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle19->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->tableCsv->RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
 			this->tableCsv->RowHeadersVisible = false;
-			dataGridViewCellStyle5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
-				static_cast<System::Int32>(static_cast<System::Byte>(38)));
-			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle20->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)),
+				static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(38)));
+			dataGridViewCellStyle20->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle5->ForeColor = System::Drawing::Color::LightGray;
-			this->tableCsv->RowsDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle20->ForeColor = System::Drawing::Color::LightGray;
+			this->tableCsv->RowsDefaultCellStyle = dataGridViewCellStyle20;
 			this->tableCsv->RowTemplate->DefaultCellStyle->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)),
 				static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(48)));
 			this->tableCsv->RowTemplate->DefaultCellStyle->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 9.75F, System::Drawing::FontStyle::Regular,
@@ -574,7 +592,7 @@ namespace FUPDATESQLSERVER {
 		if (frmCone->estaConectado)
 		{
 			coneServer = frmCone->getConexion();
-			lbdConectadoInfo->Text = frmCone->getServidor() + " - " + frmCone->getNombreBd();
+			lbdConectadoInfo->Text = (frmCone->getServidor()->ToUpper() + " - " + frmCone->getNombreBd()->ToUpper());
 		}
 	}
 
@@ -599,11 +617,13 @@ namespace FUPDATESQLSERVER {
 		if (coneServer != nullptr)
 		{
 			delete coneServer;
+			lbdConectadoInfo->Text = "Sin conexión";
 			coneServer = gcnew ConeServer();
 		}
 
 		this->frmCone = gcnew frm_coneServer();
 		frmCone->FormClosed += gcnew FormClosedEventHandler(this, &MainForm::cerrando_frmConeServer);
+		frmCone->TopMost = true;
 		frmCone->Show();
 	}
 
@@ -671,7 +691,7 @@ namespace FUPDATESQLSERVER {
 	}
 
 	private: System::Void btnEjecutar_Click(System::Object^  sender, System::EventArgs^  e) {
-		/*if (tableCsv->Rows->Count < 1)
+		if (tableCsv->Rows->Count < 1)
 		{
 			MessageBox::Show("Importe primero un archivo csv");
 			return;
@@ -684,65 +704,53 @@ namespace FUPDATESQLSERVER {
 			bar->Value = 0;
 			this->Update();
 			String^ query = txtSql->Text;
-			for (int fil = 1; fil < tableCsv->Rows->Count; fil++)
+			String^ tempQuery = txtSql->Text;
+			StringBuilder^ queryS = gcnew StringBuilder("");
+			for (int fil = 1; fil < tableCsv->Rows->Count - 1; fil++)
 			{
+				query = tempQuery;
 				for (int col = 0; col < tableCsv->Rows[fil]->Cells->Count; col++)
 				{
 					for each(String^ cabecera in encabezados)
 					{
 						if (cabecera == tableCsv->Columns[col]->HeaderText)
 						{
-							//---- Pendiente buscar porque no puedo reemplazar por ejemplo [nombre] por el valor
-							//---- y si puedo reemplazar solo nombre por el valor
-							String^ valor = tableCsv->Rows[fil]->Cells[col]->Value->ToString();
-							query = Funciones::reemplazarstr(query, "<" + cabecera + ">", valor);
+							query = query->Replace("[" + cabecera->Replace(" ", "") + "]", tableCsv->Rows[fil]->Cells[col]->Value->ToString());
 						}
 					}
 				}
-				if (!coneServer->ejecutarScriptSql(query))
+				if (chk_generarScript->Checked)
 				{
-					MessageBox::Show(coneServer->getErrorMsg());
+					queryS->Append(query + "\n");
+				}
+				else
+				{
+					if (!coneServer->ejecutarScriptSql(query))
+					{
+						MessageBox::Show("Error en la fila [" + fil.ToString() + "]: " + coneServer->getErrorMsg());
+						if ((MessageBox::Show("¿Desea terminar el proceso?", "Pregunta", MessageBoxButtons::YesNo)) == System::Windows::Forms::DialogResult::Yes)
+						{
+							bar->Visible = false;
+							bar->Value = 0;
+							this->Update();
+							return;
+						}
+					}
 				}
 				bar->Value = fil;
 				this->Update();
 			}
 			bar->Visible = false;
+
+			if (chk_generarScript->Checked)
+			{
+				txtSql->AppendText("\n" + queryS->ToString());
+			}
+
 		}
 		else
 		{
 			MessageBox::Show("Conectese primero a una base de datos.");
-		}*/
-
-		bar->Visible = true;
-		bar->Maximum = tableCsv->Rows->Count;
-		bar->Value = 0;
-		this->Update();
-		String^ query = txtSql->Text;
-		for (int fil = 0; fil < tableCsv->Rows->Count - 1; fil++)
-		{
-			txtSql->AppendText("\n");
-			for (int col = 0; col < tableCsv->Rows[fil]->Cells->Count; col++)
-			{
-				for each(String^ cabecera in encabezados)
-				{
-					if (cabecera == tableCsv->Columns[col]->HeaderText)
-					{
-						//---- Pendiente buscar porque no puedo reemplazar por ejemplo [nombre] por el valor
-						//---- y si puedo reemplazar solo nombre por el valor
-						String^ valor = tableCsv->Rows[fil]->Cells[col]->Value->ToString();
-						query = Funciones::reemplazarstr(query, "<" + cabecera + ">", valor);
-					}
-				}
-				txtSql->AppendText(",");
-				txtSql->AppendText(tableCsv->Rows[fil]->Cells[col]->Value->ToString());
-			}
-			//txtSql->AppendText(query);
-			/*if (!coneServer->ejecutarScriptSql(query))
-			{
-				MessageBox::Show(coneServer->getErrorMsg());
-			}*/
-			bar->Value = fil;
-			this->Update();
 		}
 		bar->Visible = false;
 
@@ -777,6 +785,16 @@ namespace FUPDATESQLSERVER {
 	}
 	private: System::Void opCopiarTxtSql_Click(System::Object^  sender, System::EventArgs^  e) {
 		copiarDesdeTxtSql();
+	}
+	private: System::Void itemVerDoc_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (frm_doc != nullptr)
+		{
+			delete frm_doc;
+		}
+
+		frm_doc = gcnew frm_docs();
+		frm_doc->TopMost = true;
+		frm_doc->Show();
 	}
 };
 }

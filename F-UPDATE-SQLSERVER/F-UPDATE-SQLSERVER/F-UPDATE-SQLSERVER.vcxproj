@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="frm_coneServer.cpp" />
+    <ClCompile Include="frm_docs.cpp" />
     <ClCompile Include="MainForm.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -143,7 +144,9 @@
     <ClInclude Include="frm_coneServer.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Funciones.h" />
+    <ClInclude Include="frm_docs.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -152,6 +155,9 @@
   <ItemGroup>
     <EmbeddedResource Include="frm_coneServer.resx">
       <DependentUpon>frm_coneServer.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_docs.resx">
+      <DependentUpon>frm_docs.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>

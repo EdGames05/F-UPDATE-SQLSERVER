@@ -1,4 +1,5 @@
   FUPDATESQLSERVER.frm_coneServer.resources - Embedded, ContainedInManifestFile, 
+  FUPDATESQLSERVER.frm_docs.resources - Embedded, ContainedInManifestFile, 
   FUPDATESQLSERVER.MainForm.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly F-UPDATE-SQLSERVER, Version=0.0.*, Culture=Todos los idiomas (todos los países): 
@@ -32,6 +33,9 @@ Class FUPDATESQLSERVER.frm_coneServer: AutoLayout, AnsiClass, Class, Public, Bef
     getContrasena(): PrivateScope, Public, HideBySig
     getConexion(): PrivateScope, Public, HideBySig
     getNombreBd(): PrivateScope, Public, HideBySig
+Class FUPDATESQLSERVER.frm_docs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class FUPDATESQLSERVER.MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

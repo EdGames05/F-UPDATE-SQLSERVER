@@ -36,6 +36,8 @@ namespace FUPDATESQLSERVER {
 			tip = gcnew ToolTip();
 			tip->SetToolTip(txtServidor, "Si el servidor destino proporciona puerto escribalo despues de la dirección (Ejemplo 192.0.0.1:1433");
 			estaConectado = false;
+			btnConectar->Focus();
+			txtServidor->Focus();
 		}
 
 	protected:
@@ -280,5 +282,5 @@ namespace FUPDATESQLSERVER {
 			}
 		}
 	}
-	};
+};
 }
