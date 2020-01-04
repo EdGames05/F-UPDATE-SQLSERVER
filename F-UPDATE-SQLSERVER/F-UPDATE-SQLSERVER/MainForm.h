@@ -644,42 +644,50 @@ namespace FUPDATESQLSERVER {
 
 	public: DataTable^ ConvertCSVtoDataTable(String^ strFilePath)
 	{
-		StreamReader^ sr = gcnew StreamReader(strFilePath);
-		array <String^>^ headers = encabezados = sr->ReadLine()->Split(',');
-		DataTable^ dt = gcnew DataTable();
-		for each(String^ header in headers)
+		try
 		{
-			dt->Columns->Add(header);
-		}
-
-		bar->Visible = true;
-		bar->Style = System::Windows::Forms::ProgressBarStyle::Continuous;
-		bar->Maximum = 500000;
-		bar->Value = 0;
-		this->Update();
-
-		while (!sr->EndOfStream)
-		{
-			array<String^>^ rows = sr->ReadLine()->Split(',');
-			for (int i = 0; i < rows->Length; i++)
+			StreamReader^ sr = gcnew StreamReader(strFilePath);
+			array <String^>^ headers = encabezados = sr->ReadLine()->Split(';');
+			DataTable^ dt = gcnew DataTable();
+			for each(String^ header in headers)
 			{
-				String^ str = rows[i]->Replace("\"", "");
-				rows[i] = str;
+				dt->Columns->Add(header);
 			}
-			DataRow^ dr = dt->NewRow();
-			for (int i = 0; i < headers->Length; i++)
-			{
-				dr[i] = rows[i];
-			}
-			dt->Rows->Add(dr);
-			bar->Value++;
+
+			bar->Visible = true;
+			bar->Style = System::Windows::Forms::ProgressBarStyle::Continuous;
+			bar->Maximum = 500000;
+			bar->Value = 0;
 			this->Update();
+
+			while (!sr->EndOfStream)
+			{
+				array<String^>^ rows = sr->ReadLine()->Split(';');
+				for (int i = 0; i < rows->Length; i++)
+				{
+					String^ str = rows[i]->Replace("\"", "");
+					rows[i] = str;
+				}
+				DataRow^ dr = dt->NewRow();
+				for (int i = 0; i < headers->Length; i++)
+				{
+					dr[i] = rows[i];
+				}
+				dt->Rows->Add(dr);
+				bar->Value++;
+				this->Update();
+			}
+
+			bar->Visible = false;
+			bar->Style = System::Windows::Forms::ProgressBarStyle::Continuous;
+
+			return dt;
 		}
-
-		bar->Visible = false;
-		bar->Style = System::Windows::Forms::ProgressBarStyle::Continuous;
-
-		return dt;
+		catch (Exception^ ex)
+		{
+			MessageBox::Show("Error: " + ex->Message);
+			return nullptr;
+		}
 	}
 
 	private: System::Void itemAbrirCSV_Click(System::Object^  sender, System::EventArgs^  e) {

@@ -124,14 +124,15 @@ namespace FUPDATESQLSERVER {
 			// 
 			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->copiarURLToolStripMenuItem });
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
-			this->contextMenuStrip1->Size = System::Drawing::Size(134, 26);
+			this->contextMenuStrip1->Size = System::Drawing::Size(181, 48);
 			// 
 			// copiarURLToolStripMenuItem
 			// 
 			this->copiarURLToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"copiarURLToolStripMenuItem.Image")));
 			this->copiarURLToolStripMenuItem->Name = L"copiarURLToolStripMenuItem";
-			this->copiarURLToolStripMenuItem->Size = System::Drawing::Size(133, 22);
+			this->copiarURLToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->copiarURLToolStripMenuItem->Text = L"Copiar URL";
+			this->copiarURLToolStripMenuItem->Click += gcnew System::EventHandler(this, &frm_docs::copiarURLToolStripMenuItem_Click);
 			// 
 			// btnEjecutar
 			// 
@@ -178,6 +179,10 @@ namespace FUPDATESQLSERVER {
 	}
 	private: System::Void label4_MouseClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
 		contextMenuStrip1->Show(Cursor->Position);
+	}
+	private: System::Void copiarURLToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		Clipboard::Clear();
+		Clipboard::SetText("https://github.com/EdGames05/F-UPDATE-SQLSERVER");
 	}
 };
 }

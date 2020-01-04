@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label2.Text" xml:space="preserve">
-    <value>El tipo de archivo que tiene que abrir es un CSV delimitado por comas
+    <value>El tipo de archivo que tiene que abrir es un CSV delimitado por punto y coma
 una vez hecho eso, puede conectarse a una base de datos de SQL-SERVER
 dando click en el menú de archivo y luego en conectarse a una base de datos
 

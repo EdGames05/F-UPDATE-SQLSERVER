@@ -26,7 +26,7 @@ public:
 
 	SqlConnection^ conectar(String^ servidor, String^ usuario, String^ contrasena, String^ nombreBd)
 	{
-		if (servidor == "" || usuario || "" || contrasena == "" || nombreBd == "")
+		if ((servidor == "") || (usuario == "") || (contrasena == "") || (nombreBd == ""))
 		{
 			throw gcnew System::ArgumentException("Las cadenas tienen que traer información.", "servidor, usuario, contrasena, nombreBd");
 			esConectado = false;

@@ -36,7 +36,6 @@ namespace FUPDATESQLSERVER {
 			tip = gcnew ToolTip();
 			tip->SetToolTip(txtServidor, "Si el servidor destino proporciona puerto escribalo despues de la dirección (Ejemplo 192.0.0.1:1433");
 			estaConectado = false;
-			btnConectar->Focus();
 			txtServidor->Focus();
 		}
 
@@ -215,7 +214,6 @@ namespace FUPDATESQLSERVER {
 			this->txtNombreBd->ForeColor = System::Drawing::Color::LightGray;
 			this->txtNombreBd->Location = System::Drawing::Point(152, 153);
 			this->txtNombreBd->Name = L"txtNombreBd";
-			this->txtNombreBd->PasswordChar = '*';
 			this->txtNombreBd->Size = System::Drawing::Size(345, 26);
 			this->txtNombreBd->TabIndex = 13;
 			// 
