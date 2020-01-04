@@ -714,7 +714,7 @@ namespace FUPDATESQLSERVER {
 			String^ query = txtSql->Text;
 			String^ tempQuery = txtSql->Text;
 			StringBuilder^ queryS = gcnew StringBuilder("");
-			for (int fil = 1; fil < tableCsv->Rows->Count - 1; fil++)
+			for (int fil = 0; fil < tableCsv->Rows->Count - 1; fil++)
 			{
 				query = tempQuery;
 				for (int col = 0; col < tableCsv->Rows[fil]->Cells->Count; col++)
