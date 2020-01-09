@@ -1,13 +1,13 @@
 ﻿  frm_coneServer.cpp
 c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\frm_coneserver.h(23): warning C4677: 'coneS': la signatura de un miembro no privado contiene un tipo privado de ensamblado de 'ConeServer'
   c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\coneserver.h(7): note: vea la declaración de 'ConeServer'
-c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\frm_coneserver.h(257): warning C4677: 'getConexion': la signatura de un miembro no privado contiene un tipo privado de ensamblado de 'ConeServer'
+c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\frm_coneserver.h(255): warning C4677: 'getConexion': la signatura de un miembro no privado contiene un tipo privado de ensamblado de 'ConeServer'
   c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\coneserver.h(7): note: vea la declaración de 'ConeServer'
   frm_docs.cpp
   MainForm.cpp
 c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\frm_coneserver.h(23): warning C4677: 'coneS': la signatura de un miembro no privado contiene un tipo privado de ensamblado de 'ConeServer'
   c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\coneserver.h(7): note: vea la declaración de 'ConeServer'
-c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\frm_coneserver.h(257): warning C4677: 'getConexion': la signatura de un miembro no privado contiene un tipo privado de ensamblado de 'ConeServer'
+c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\frm_coneserver.h(255): warning C4677: 'getConexion': la signatura de un miembro no privado contiene un tipo privado de ensamblado de 'ConeServer'
   c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\coneserver.h(7): note: vea la declaración de 'ConeServer'
 c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\mainform.h(633): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
 c:\users\allam\source\repos\f-update-sqlserver\f-update-sqlserver\mainform.h(640): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
